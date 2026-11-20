@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const groups = [
+  { name: "Science Explained", note: "Physics without unnecessary barriers.", articles: [
+    ["Why Are Single-Qubit Gates in Strontium Challenging?", "A guided look at encoding strategies and the physical origins of gate errors.", "In preparation", ""],
+    ["What Makes an Atomic Transition an Optical Clock?", "The special properties that make some transitions extraordinary frequency references.", "In preparation", ""]
+  ]},
+  { name: "Research Notes", note: "Methods, ideas, and lessons from research.", articles: [
+    ["Automating the Search for High-Fidelity Rydberg Gates", "Pulse optimization, verification, and the role of automation in quantum control.", "In preparation", ""]
+  ]},
+  { name: "Paper Reviews", note: "Reading papers for the question, the method, and the evidence.", articles: [
+    ["Notes on neutral-atom quantum technologies", "A growing collection of paper notes and research perspectives.", "Collection in progress", ""]
+  ]}
+];
+---
+<BaseLayout title="Writing" description="Science explanations, research notes, and paper reviews by Wanda.">
+  <header class="page-heading"><p class="eyebrow">THE JOURNAL</p><h1>Writing</h1><p>Three ways into the same subject: understand the physics, follow the research, or read a paper more critically.</p></header>
+  {groups.map((group, i) => <section class="writing-group"><div class="group-heading"><div><p class="eyebrow">0{i + 1} / COLLECTION</p><h2>{group.name}</h2></div><p>{group.note}</p></div>
+    <div class="article-list compact">{group.articles.map((article, j) => <article class="article-row"><span class="article-index">0{j + 1}</span><div class="article-row-content"><h3>{article[0]}</h3><p>{article[1]}</p></div><span class="article-status">{article[2]}</span></article>)}</div>
+  </section>)}
+</BaseLayout>
