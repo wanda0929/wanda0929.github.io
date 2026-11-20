@@ -9,7 +9,7 @@ const latestNotes = researchNotes.slice(0, 3);
     <div class="hero-copy">
       <p class="eyebrow">NEUTRAL ATOMS · QUANTUM CONTROL</p>
       <h1>From atomic physics to <em>quantum computing.</em></h1>
-      <p class="hero-description">I'm Wanda. I work on neutral-atom quantum computing, focusing on Rydberg interactions, quantum gates, and pulse design. Here I share my research projects and computational tools, along with notes on the physics, methods, and papers I am exploring.</p>
+      <p class="hero-description">I'm Wanda. I work on quantum control and neutral-atom quantum computing, focusing on Rydberg interactions, quantum gates, and pulse design. Here I share my research projects and computational tools, along with notes on the physics, methods, and papers I am exploring.</p>
       <div class="hero-actions">
         <a class="text-link" href="/work/">Explore selected work <span aria-hidden="true">↗</span></a>
         <a class="quiet-link" href="/notes/">Read the notes <span aria-hidden="true">→</span></a>
@@ -30,9 +30,9 @@ const latestNotes = researchNotes.slice(0, 3);
       <div><p class="eyebrow">PAPERS &amp; PROJECTS</p><h2 id="work-heading">Selected work</h2></div>
       <a class="text-link" href="/work/">View all work <span aria-hidden="true">→</span></a>
     </div>
-    <p class="section-description">Research contributions in neutral-atom quantum computing.</p>
+    <p class="section-description">Research contributions in quantum control and neutral-atom quantum computing.</p>
     <div class="work-preview-grid">
-      {selectedWork.slice(0, 3).map((item, index) => <article class="work-card">
+      {selectedWork.slice(0, 4).map((item, index) => <article class="work-card">
         <div class="work-card-topline"><span>0{index + 1}</span><span>{item.type} · {item.year}</span></div>
         <h3><a href={`/work/#${item.id}`}>{item.title}</a></h3>
         <p>{item.description}</p>
