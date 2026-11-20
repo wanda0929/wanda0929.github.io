@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { researchNotes } from "../../data/notes";
+
+const formatDate = (date: string) => new Date(date).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+  timeZone: "UTC",
+});
+---
+<BaseLayout title="Research Notes" description="Physics explanations, paper notes, and technical explorations from Wanda's research notebook.">
+  <header class="page-heading">
+    <p class="eyebrow">THE NOTEBOOK</p>
+    <h1>Research Notes</h1>
+    <p>Notes on the physics, methods, and papers I am working through, from accessible explanations to technical discussions.</p>
+  </header>
+
+  <section class="writing-group" aria-label="Research notes">
+    <div class="article-list compact">
+      {researchNotes.map((note, index) => (
+        <article class="article-row" id={note.id}>
+          <span class="article-index">{String(index + 1).padStart(2, "0")}</span>
+          <div class="article-row-content">
+            <p class="eyebrow">{note.category}</p>
+            <h3>{note.href ? <a href={note.href}>{note.title}</a> : note.title}</h3>
+            <p>{note.description}</p>
+          </div>
+          <span class="article-status">
+            {note.date ? <time datetime={note.date}>{formatDate(note.date)}</time> : note.status}
+          </span>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

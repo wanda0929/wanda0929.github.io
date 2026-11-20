@@ -2,7 +2,7 @@
 layout: ../../layouts/ArticleLayout.astro
 title: "Why Are Single-Qubit Gates in Strontium Challenging?"
 description: "A guided look at encoding strategies and the physical origins of gate errors in strontium atoms."
-category: "Science Explained"
+category: "Explainer"
 date: "2026-11-20"
 readingTime: "Draft"
 draft: true

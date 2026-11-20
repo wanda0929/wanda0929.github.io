@@ -1,57 +1,62 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-const latest = [
-  { category: "Science Explained", title: "Why Are Single-Qubit Gates in Strontium Challenging?", description: "A guide to the physics behind encoding choices, control, and fidelity in optical-clock atoms.", status: "In preparation" },
-  { category: "Science Explained", title: "What Makes an Atomic Transition an Optical Clock?", description: "Why only a small set of atomic transitions can serve as exceptionally stable frequency references.", status: "In preparation" },
-  { category: "Research Notes", title: "Automating the Search for High-Fidelity Rydberg Gates", description: "Thoughts on pulse design, numerical optimization, and trustworthy verification.", status: "In preparation" }
-];
+import { researchNotes } from "../data/notes";
+import { selectedWork } from "../data/work";
+const latestNotes = researchNotes.slice(0, 3);
 ---
 <BaseLayout>
   <section class="hero">
     <div class="hero-copy">
-      <p class="eyebrow">QUANTUM PHYSICS · RESEARCH · IDEAS</p>
-      <h1>Understanding the physics behind <em>quantum technologies.</em></h1>
-      <p class="hero-description">I'm Wanda. I write about atoms, quantum control, and the ideas that connect fundamental physics with emerging quantum technologies — from accessible explanations to research-level notes.</p>
-      <div class="hero-actions"><a class="text-link" href="/writing/">Explore the journal <span>↗</span></a><a class="quiet-link" href="/about/">A little about me</a></div>
+      <p class="eyebrow">NEUTRAL ATOMS · QUANTUM CONTROL</p>
+      <h1>From atomic physics to <em>quantum computing.</em></h1>
+      <p class="hero-description">I'm Wanda. I work on neutral-atom quantum computing, focusing on Rydberg interactions, quantum gates, and pulse design. Here I share my research projects and computational tools, along with notes on the physics, methods, and papers I am exploring.</p>
+      <div class="hero-actions">
+        <a class="text-link" href="/work/">Explore selected work <span aria-hidden="true">↗</span></a>
+        <a class="quiet-link" href="/notes/">Read the notes <span aria-hidden="true">→</span></a>
+      </div>
     </div>
-    <div class="hero-art" aria-label="Abstract illustration of an optical tweezer array">
-      <div class="art-caption">01 / ATOMIC SYSTEMS</div>
-      <div class="atom-field">
+    <div class="hero-art" role="img" aria-label="Abstract illustration of an optical tweezer array">
+      <div class="art-caption">ATOMIC SYSTEMS / QUANTUM CONTROL</div>
+      <div class="atom-field" aria-hidden="true">
         {Array.from({ length: 5 }).map((_, row) => Array.from({ length: 7 }).map((__, col) => <span class:list={["atom", (row + col) % 3 === 0 ? "atom-bright" : ""]} style={`--x:${col};--y:${row}`}></span>))}
       </div>
-      <div class="laser-line"></div>
-      <div class="art-bottom"><span>NEUTRAL ATOMS</span><span>QUANTUM CONTROL</span></div>
+      <div class="laser-line" aria-hidden="true"></div>
+      <div class="art-bottom"><span>INTERACTIONS</span><span>GATES &amp; PULSES</span></div>
     </div>
   </section>
 
-  <section class="intro-strip">
-    <p>This journal has two complementary aims:</p>
-    <div><strong>Make difficult physics understandable.</strong><span>Careful explanations for curious readers, students, and scientists beyond the field.</span></div>
-    <div><strong>Make research thinking visible.</strong><span>Methods, paper discussions, and reflections from the process of doing science.</span></div>
-  </section>
-
-  <section class="writing-section">
-    <div class="section-heading"><div><p class="eyebrow">THE JOURNAL</p><h2>Selected writing</h2></div><a class="text-link" href="/writing/">All articles <span>→</span></a></div>
-    <div class="article-list">
-      {latest.map((item, index) => <article class="article-row">
-        <span class="article-index">0{index + 1}</span>
-        <div class="article-row-content">
-          <p class="eyebrow">{item.category}</p>
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
-        </div>
-        <span class="article-status">{item.status}</span>
+  <section class="work-section" aria-labelledby="work-heading">
+    <div class="section-heading">
+      <div><p class="eyebrow">PAPERS &amp; PROJECTS</p><h2 id="work-heading">Selected work</h2></div>
+      <a class="text-link" href="/work/">View all work <span aria-hidden="true">→</span></a>
+    </div>
+    <p class="section-description">Research contributions in neutral-atom quantum computing.</p>
+    <div class="work-preview-grid">
+      {selectedWork.slice(0, 3).map((item, index) => <article class="work-card">
+        <div class="work-card-topline"><span>0{index + 1}</span><span>{item.type} · {item.year}</span></div>
+        <h3><a href={`/work/#${item.id}`}>{item.title}</a></h3>
+        <p>{item.description}</p>
+        <a class="work-card-link" href={item.href} target="_blank" rel="noreferrer">{item.linkLabel} <span aria-hidden="true">↗</span></a>
       </article>)}
     </div>
   </section>
 
-  <section class="topics-section">
-    <div><p class="eyebrow">AREAS OF CURIOSITY</p><h2>What I think about</h2></div>
-    <div class="topic-grid">
-      <a href="/writing/"><span>01</span><strong>Atomic physics</strong><small>Atomic structure, optical clocks, and neutral-atom platforms.</small></a>
-      <a href="/writing/"><span>02</span><strong>Quantum control</strong><small>Rydberg gates, pulse shaping, and robust control.</small></a>
-      <a href="/writing/"><span>03</span><strong>Quantum computing</strong><small>Entanglement, error correction, and architectures.</small></a>
-      <a href="/writing/"><span>04</span><strong>Scientific computing</strong><small>Optimization, simulation, and computational methods.</small></a>
+  <section class="writing-section notes-preview" aria-labelledby="notes-heading">
+    <div class="section-heading">
+      <div><p class="eyebrow">THE NOTEBOOK</p><h2 id="notes-heading">Research notes</h2></div>
+      <a class="text-link" href="/notes/">All notes <span aria-hidden="true">→</span></a>
+    </div>
+    <p class="section-description">Explanations, reading notes, and methods from the questions I work through.</p>
+    <div class="article-list compact">
+      {latestNotes.map((item, index) => <article class="article-row">
+        <span class="article-index">0{index + 1}</span>
+        <div class="article-row-content">
+          <p class="eyebrow">{item.category}</p>
+          <h3>{item.href ? <a href={item.href}>{item.title}</a> : item.title}</h3>
+          <p>{item.description}</p>
+        </div>
+        <span class="article-status">{item.status ?? item.date}</span>
+      </article>)}
     </div>
   </section>
 </BaseLayout>

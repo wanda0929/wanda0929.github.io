@@ -2,7 +2,7 @@
 layout: ../../layouts/ArticleLayout.astro
 title: "Automating the Search for High-Fidelity Rydberg Gates"
 description: "Pulse optimization, verification, and the role of automation in quantum control."
-category: "Research Notes"
+category: "Technical note"
 date: "2026-11-20"
 readingTime: "Draft"
 draft: true

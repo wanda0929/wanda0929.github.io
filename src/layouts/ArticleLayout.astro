@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-const { title, description, category = "Research Notes", date, readingTime = "8 min read", draft = false } = Astro.props;
+const { title, description, category = "Technical note", date, readingTime = "8 min read", draft = false } = Astro.props.frontmatter ?? Astro.props;
 const formattedDate = date ? new Date(date + "T12:00:00").toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }) : "";
 ---
 <BaseLayout title={title} description={description}>
   <article class="article">
-    <div class="article-topline"><a href="/writing/">Writing</a><span>/</span><span>{category}</span></div>
+    <div class="article-topline"><a href="/notes/">Research Notes</a><span>/</span><span>{category}</span></div>
     <header class="article-header">
       <p class="eyebrow">{category}</p>
       <h1>{title}</h1>
@@ -14,6 +14,6 @@ const formattedDate = date ? new Date(date + "T12:00:00").toLocaleDateString("en
       {draft && <p class="draft-note">Working draft · This article is not yet a finished publication.</p>}
     </header>
     <div class="article-body"><slot /></div>
-    <div class="article-end"><span>—</span><p>Thank you for reading.</p><a href="/writing/">← Back to all writing</a></div>
+    <div class="article-end"><span>—</span><p>Thank you for reading.</p><a href="/notes/">← Back to all notes</a></div>
   </article>
 </BaseLayout>

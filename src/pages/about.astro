@@ -1,15 +1,36 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+const interests = [
+  { title: "Atomic physics & Rydberg interactions", description: "Atomic structure and interaction mechanisms, including systems with different atomic species." },
+  { title: "Quantum gates & pulse design", description: "Control pulses, entangling gates, and the physical limits of gate performance." },
+  { title: "Simulation & optimization", description: "Numerical models, automated pulse searches, and verification under noise and control imperfections." },
+  { title: "Quantum error correction", description: "Measurement-free protocols and the control requirements of neutral-atom architectures." }
+];
 ---
-<BaseLayout title="About Wanda" description="About Wanda and the ideas behind this personal research journal.">
-  <header class="page-heading"><p class="eyebrow">A NOTE FROM THE AUTHOR</p><h1>About</h1><p>A place to think carefully, explain clearly, and share what I learn.</p></header>
+<BaseLayout title="About Wanda" description="Wanda's research in neutral-atom quantum computing, Rydberg interactions, pulse design, and numerical simulation.">
+  <header class="page-heading"><p class="eyebrow">A NOTE FROM THE AUTHOR</p><h1>About</h1><p>The research I do, and the ideas I work through along the way.</p></header>
   <article class="about-copy">
     <p class="about-lead">Hello, I'm Wanda.</p>
-    <p>I'm a researcher working around neutral-atom quantum technologies, with interests spanning atomic physics, quantum control, and scientific computing.</p>
-    <p>This journal is where I make room for two kinds of writing. The first is explanatory: taking a physical idea that may seem specialised and making its logic accessible without removing the science. The second is research-oriented: documenting methods, interpreting papers, and reflecting on the questions that emerge while building and studying quantum systems.</p>
-    <p>Some articles are written for readers encountering a topic for the first time; others assume familiarity with the field. Each piece will make its intended level clear.</p>
-    <p>The views and explanations here are my own and are not official statements from any institution or employer. Research details will be shared with care, respecting publication status, collaboration agreements, and intellectual-property obligations.</p>
-    <div class="about-signoff">Wanda<br/><span>Quantum physics · Research · Ideas</span></div>
+    <p>I work on neutral-atom quantum computing, using theoretical models and numerical simulations to study how atomic interactions can be used to perform quantum operations. My research focuses on Rydberg interactions, entangling gates, and pulse design, including schemes that use different atomic species.</p>
+    <p>My computational work includes automated pulse optimization and simulation-based checks of gate performance, with attention to noise and control imperfections. I also explore measurement-free quantum error correction and how the control of atomic systems can help protect quantum information.</p>
+
+    <section class="about-section" aria-labelledby="about-site-heading">
+      <h2 id="about-site-heading">A notebook and a collection of work</h2>
+      <p><a href="/notes/">Research Notes</a> is my working notebook: explanations of physical ideas, notes on papers, calculations, and methods I am exploring. Some entries start from the basics; others work through technical details.</p>
+      <p><a href="/work/">Selected Work</a> brings together papers, research projects, and computational tools from my work. It is a place to see the questions behind a project, what the work contributes, and where to find the paper or code.</p>
+      <p>Across both, I aim to make the physical reasoning clear: what a method does, why it works, and where its assumptions matter.</p>
+    </section>
+
+    <section class="about-section" aria-labelledby="interests-heading">
+      <p class="eyebrow">RESEARCH &amp; INTERESTS</p>
+      <h2 id="interests-heading">What I work on and explore</h2>
+      <div class="topic-grid about-interests">
+        {interests.map((item, index) => <div class="topic-item"><span>0{index + 1}</span><h3>{item.title}</h3><small>{item.description}</small></div>)}
+      </div>
+    </section>
+
+    <p class="about-disclaimer">The views and explanations here are my own and are not official statements from any institution or employer. Research details are shared with care for publication status and collaboration agreements.</p>
+    <div class="about-signoff">Wanda<br/><span>Neutral atoms · Quantum control · Research notes</span></div>
     <p class="about-contact">Find me on <a href="https://github.com/wanda0929" target="_blank" rel="noreferrer">GitHub ↗</a>.</p>
   </article>
 </BaseLayout>

@@ -2,10 +2,15 @@
 import "../styles/global.css";
 const {
   title = "Wanda's Research Journal",
-  description = "Notes on quantum physics, neutral atoms, and the ideas behind quantum technologies.",
+  description = "Research notes, papers, and projects by Wanda on neutral-atom quantum computing, Rydberg interactions, and quantum control.",
   canonical
 } = Astro.props;
 const pageTitle = title === "Wanda's Research Journal" ? title : `${title} — Wanda's Research Journal`;
+const navigation = [
+  { href: "/notes/", label: "Research Notes" },
+  { href: "/work/", label: "Selected Work" },
+  { href: "/about/", label: "About" }
+];
 ---
 <!doctype html>
 <html lang="en">
@@ -33,8 +38,7 @@ const pageTitle = title === "Wanda's Research Journal" ? title : `${title} — W
           <span>Wanda's <em>Research Journal</em></span>
         </a>
         <nav aria-label="Main navigation">
-          <a href="/writing/">Writing</a>
-          <a href="/about/">About</a>
+          {navigation.map(({ href, label }) => <a href={href} aria-current={Astro.url.pathname.startsWith(href) ? "page" : undefined}>{label}</a>)}
         </nav>
       </header>
       <main id="main">
@@ -43,7 +47,7 @@ const pageTitle = title === "Wanda's Research Journal" ? title : `${title} — W
       <footer class="site-footer">
         <div>
           <span class="footer-name">Wanda's Research Journal</span>
-          <span class="footer-note">Quantum physics, research, and ideas.</span>
+          <span class="footer-note">Neutral atoms, quantum control, and a researcher's notebook.</span>
         </div>
         <div class="footer-links">
           <a href="https://github.com/wanda0929" target="_blank" rel="noreferrer">GitHub ↗</a>

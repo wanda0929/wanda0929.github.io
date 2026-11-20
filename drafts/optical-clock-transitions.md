@@ -2,7 +2,7 @@
 layout: ../../layouts/ArticleLayout.astro
 title: "What Makes an Atomic Transition an Optical Clock?"
 description: "Why only certain atomic transitions can serve as exceptionally stable frequency references."
-category: "Science Explained"
+category: "Explainer"
 date: "2026-11-20"
 readingTime: "Draft"
 draft: true

@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { selectedWork } from "../../data/work";
+---
+<BaseLayout
+  title="Selected Work"
+  description="Papers and projects from Wanda's research on neutral-atom quantum computing."
+>
+  <header class="page-heading">
+    <p class="eyebrow">PAPERS &amp; PROJECTS</p>
+    <h1>Selected Work</h1>
+    <p>Papers and projects from my research on neutral-atom quantum computing.</p>
+  </header>
+
+  <section class="work-list" aria-label="Selected papers and projects">
+    {selectedWork.map((work) => (
+      <article class="work-entry" id={work.id}>
+        <div class="work-meta">
+          <span>{work.type}</span>
+          <span>{work.year}</span>
+          <span>{work.topic}</span>
+        </div>
+        <h2>
+          <a href={work.href} title={work.paperTitle} target="_blank" rel="noreferrer">
+            {work.title}
+          </a>
+        </h2>
+        <p class="work-description">{work.description}</p>
+        <div class="work-links">
+          <a class="text-link" href={work.href} target="_blank" rel="noreferrer">
+            {work.linkLabel} <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <p class="work-links">
+    <a class="text-link" href="/notes/">Research Notes <span aria-hidden="true">→</span></a>
+  </p>
+</BaseLayout>
