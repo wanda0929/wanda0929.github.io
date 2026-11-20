@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import FigureViewer from "../components/FigureViewer.astro";
+import "katex/dist/katex.min.css";
 const { title, description, category = "Technical note", date, readingTime = "8 min read", draft = false } = Astro.props.frontmatter ?? Astro.props;
 const formattedDate = date ? new Date(date + "T12:00:00").toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }) : "";
 ---
@@ -16,4 +18,5 @@ const formattedDate = date ? new Date(date + "T12:00:00").toLocaleDateString("en
     <div class="article-body"><slot /></div>
     <div class="article-end"><span>—</span><p>Thank you for reading.</p><a href="/notes/">← Back to all notes</a></div>
   </article>
+  <FigureViewer />
 </BaseLayout>
