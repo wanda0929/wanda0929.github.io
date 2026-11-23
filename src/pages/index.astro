@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { researchNotes } from "../data/notes";
 import { selectedWork } from "../data/work";
-const latestNotes = researchNotes.slice(0, 3);
+const latestNotes = researchNotes.filter((note) => note.id !== "optical-clock-transitions").slice(0, 3);
 ---
 <BaseLayout>
   <section class="hero">
